@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.de37456,
+ * Leaflet.markercluster 1.5.4+master.3714a20,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -1000,7 +1000,9 @@
 
 		//Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
 		_addLayer: function (layer, zoom) {
-	        console.log('_addLayer', layer);
+	        if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') {
+	            console.log('_addLayer', layer);
+	        }
 			var gridClusters = this._gridClusters,
 			    gridUnclustered = this._gridUnclustered,
 				minZoom = Math.floor(this._map.getMinZoom()),
@@ -1018,7 +1020,11 @@
 
 				//Try find a cluster close by
 				var closest = gridClusters[zoom].getNearObject(markerPoint);
+	            if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
+	                console.log('closest', closest);
+	            }
 				if (closest) {
+	                console.log('1');
 					closest._addChild(layer);
 					layer.__parent = closest;
 					return;
@@ -1027,7 +1033,11 @@
 				//Try find a marker close by to form a new cluster with
 				closest = gridUnclustered[zoom].getNearObject(markerPoint);
 				if (closest) {
+	                console.log('2');
 					var parent = closest.__parent;
+	                if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
+	                    console.log('parent', parent);
+	                }
 					if (parent) {
 						this._removeLayer(closest, false);
 					}
@@ -1054,6 +1064,7 @@
 				}
 
 				//Didn't manage to cluster in at this zoom, record us as a marker here and continue upwards
+	            console.log('3');
 				gridUnclustered[zoom].addObject(layer, markerPoint);
 			}
 
