@@ -83,10 +83,11 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	addLayer: function (layer) {
+        console.log(layer)
 
-		if (layer instanceof L.LayerGroup) {
-			return this.addLayers([layer]);
-		}
+		// if (layer instanceof L.LayerGroup) {
+		// 	return this.addLayers([layer]);
+		// }
 
 		//Don't cluster non point data
 		if (!layer.getLatLng) {
@@ -141,9 +142,9 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	removeLayer: function (layer) {
 
-		if (layer instanceof L.LayerGroup) {
-			return this.removeLayers([layer]);
-		}
+		// if (layer instanceof L.LayerGroup) {
+		// 	return this.removeLayers([layer]);
+		// }
 
 		//Non point layers
 		if (!layer.getLatLng) {
@@ -233,15 +234,15 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 					// - Groups are not included in this group, only their non-group child layers (hasLayer).
 					// Changing array length while looping does not affect performance in current browsers:
 					// http://jsperf.com/for-loop-changing-length/6
-					if (m instanceof L.LayerGroup) {
-						if (originalArray) {
-							layersArray = layersArray.slice();
-							originalArray = false;
-						}
-						this._extractNonGroupLayers(m, layersArray);
-						l = layersArray.length;
-						continue;
-					}
+					// if (m instanceof L.LayerGroup) {
+					// 	if (originalArray) {
+					// 		layersArray = layersArray.slice();
+					// 		originalArray = false;
+					// 	}
+					// 	this._extractNonGroupLayers(m, layersArray);
+					// 	l = layersArray.length;
+					// 	continue;
+					// }
 
 					//Not point data, can't be clustered
 					if (!m.getLatLng) {
@@ -298,15 +299,15 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 				m = layersArray[offset];
 
 				// Group of layers, append children to layersArray and skip.
-				if (m instanceof L.LayerGroup) {
-					if (originalArray) {
-						layersArray = layersArray.slice();
-						originalArray = false;
-					}
-					this._extractNonGroupLayers(m, layersArray);
-					l = layersArray.length;
-					continue;
-				}
+				// if (m instanceof L.LayerGroup) {
+				// 	if (originalArray) {
+				// 		layersArray = layersArray.slice();
+				// 		originalArray = false;
+				// 	}
+				// 	this._extractNonGroupLayers(m, layersArray);
+				// 	l = layersArray.length;
+				// 	continue;
+				// }
 
 				//Not point data, can't be clustered
 				if (!m.getLatLng) {
@@ -337,15 +338,15 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 				m = layersArray[i];
 
 				// Group of layers, append children to layersArray and skip.
-				if (m instanceof L.LayerGroup) {
-					if (originalArray) {
-						layersArray = layersArray.slice();
-						originalArray = false;
-					}
-					this._extractNonGroupLayers(m, layersArray);
-					l = layersArray.length;
-					continue;
-				}
+				// if (m instanceof L.LayerGroup) {
+				// 	if (originalArray) {
+				// 		layersArray = layersArray.slice();
+				// 		originalArray = false;
+				// 	}
+				// 	this._extractNonGroupLayers(m, layersArray);
+				// 	l = layersArray.length;
+				// 	continue;
+				// }
 
 				this._arraySplice(this._needsClustering, m);
 				npg.removeLayer(m);
@@ -367,11 +368,11 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 				m = layersArray2[i];
 
 				// Group of layers, append children to layersArray and skip.
-				if (m instanceof L.LayerGroup) {
-					this._extractNonGroupLayers(m, layersArray2);
-					l2 = layersArray2.length;
-					continue;
-				}
+				// if (m instanceof L.LayerGroup) {
+				// 	this._extractNonGroupLayers(m, layersArray2);
+				// 	l2 = layersArray2.length;
+				// 	continue;
+				// }
 
 				this._unspiderfyLayer(m);
 			}
@@ -381,15 +382,15 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			m = layersArray[i];
 
 			// Group of layers, append children to layersArray and skip.
-			if (m instanceof L.LayerGroup) {
-				if (originalArray) {
-					layersArray = layersArray.slice();
-					originalArray = false;
-				}
-				this._extractNonGroupLayers(m, layersArray);
-				l = layersArray.length;
-				continue;
-			}
+			// if (m instanceof L.LayerGroup) {
+			// 	if (originalArray) {
+			// 		layersArray = layersArray.slice();
+			// 		originalArray = false;
+			// 	}
+			// 	this._extractNonGroupLayers(m, layersArray);
+			// 	l = layersArray.length;
+			// 	continue;
+			// }
 
 			if (!m.__parent) {
 				npg.removeLayer(m);
@@ -1168,10 +1169,10 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 		for (; i < layers.length; i++) {
 			layer = layers[i];
 
-			if (layer instanceof L.LayerGroup) {
-				this._extractNonGroupLayers(layer, output);
-				continue;
-			}
+			// if (layer instanceof L.LayerGroup) {
+			// 	this._extractNonGroupLayers(layer, output);
+			// 	continue;
+			// }
 
 			output.push(layer);
 		}
