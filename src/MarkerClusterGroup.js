@@ -938,7 +938,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	_moveEnd: function () {
-        console.log('moveend')
 		if (this._inZoomAnimation) {
 			return;
 		}
@@ -991,6 +990,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	//Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
 	_addLayer: function (layer, zoom) {
+        console.log('_addLayer')
 		var gridClusters = this._gridClusters,
 		    gridUnclustered = this._gridUnclustered,
 			minZoom = Math.floor(this._map.getMinZoom()),
