@@ -548,9 +548,8 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	//Zoom down to show the given layer (spiderfying if necessary) then calls the callback
+    // не вызывается
 	zoomToShowLayer: function (layer, callback) {
-        console.log(layer);
-        console.log(callback)
 
 		var map = this._map;
 
@@ -666,6 +665,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	getVisibleParent: function (marker) {
+        console.log('getVisibleParent',marker)
 		var vMarker = marker;
 		while (vMarker && !vMarker._icon) {
 			vMarker = vMarker.__parent;
