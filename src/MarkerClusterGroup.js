@@ -928,6 +928,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	_zoomEnd: function () {
+        console.log('_zoomEnd')
 		if (!this._map) { //May have been removed from the map by a zoomEnd handler
 			return;
 		}
