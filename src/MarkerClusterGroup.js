@@ -938,6 +938,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	_moveEnd: function () {
+        console.log('moveend')
 		if (this._inZoomAnimation) {
 			return;
 		}
