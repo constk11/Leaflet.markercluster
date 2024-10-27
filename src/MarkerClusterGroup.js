@@ -266,8 +266,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 					//If we just made a cluster of size 2 then we need to remove the other marker from the map (if it is) or we never will
 					if (m.__parent) {
 						if (m.__parent.getChildCount() === 2) {
-                            console.log('m', m);
-                            console.log('markers', m.__parent.getAllChildMarkers())
 							var markers = m.__parent.getAllChildMarkers(),
 							    otherMarker = markers[0] === m ? markers[1] : markers[0];
 							fg.removeLayer(otherMarker);
@@ -284,11 +282,12 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 				if (offset === l) {
 
 					// Refresh bounds and weighted positions.
-					this._topClusterLevel._recalculateBounds();
+                    //check
+					// this._topClusterLevel._recalculateBounds();
 
-					this._refreshClustersIcons();
+					// this._refreshClustersIcons();
 
-					this._topClusterLevel._recursivelyAddChildrenToMap(null, this._zoom, this._currentShownBounds);
+					// this._topClusterLevel._recursivelyAddChildrenToMap(null, this._zoom, this._currentShownBounds);
 				} else {
 					setTimeout(process, this.options.chunkDelay);
 				}
