@@ -258,7 +258,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 						continue;
 					}
 
-					// this._addLayer(m, this._maxZoom); check
+					this._addLayer(m, this._maxZoom);
 					if (!skipLayerAddEvent) {
 						this.fire('layeradd', { layer: m });
 					}
@@ -266,6 +266,8 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 					//If we just made a cluster of size 2 then we need to remove the other marker from the map (if it is) or we never will
 					if (m.__parent) {
 						if (m.__parent.getChildCount() === 2) {
+                            console.log('m', m);
+                            console.log('markers', m.__parent.getAllChildMarkers())
 							var markers = m.__parent.getAllChildMarkers(),
 							    otherMarker = markers[0] === m ? markers[1] : markers[0];
 							fg.removeLayer(otherMarker);
