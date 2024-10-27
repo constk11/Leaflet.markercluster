@@ -1011,10 +1011,12 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			//Try find a cluster close by
 			var closest = gridClusters[zoom].getNearObject(markerPoint);
             if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
-                console.log('closest', closest)
+                console.log('closest1', closest)
             }
 			if (closest) {
-                console.log('1')
+                if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
+                    console.log('1')
+                }
 				closest._addChild(layer);
 				layer.__parent = closest;
 				return;
@@ -1022,8 +1024,13 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 			//Try find a marker close by to form a new cluster with
 			closest = gridUnclustered[zoom].getNearObject(markerPoint);
+            if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
+                console.log('closest2', closest)
+            }
 			if (closest) {
-                console.log('2')
+                if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
+                    console.log('2')
+                }
 				var parent = closest.__parent;
                 if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
                     console.log('parent', parent)

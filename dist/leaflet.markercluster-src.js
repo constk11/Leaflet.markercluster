@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.3714a20,
+ * Leaflet.markercluster 1.5.4+master.3b6854c,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -1021,10 +1021,12 @@
 				//Try find a cluster close by
 				var closest = gridClusters[zoom].getNearObject(markerPoint);
 	            if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
-	                console.log('closest', closest);
+	                console.log('closest1', closest);
 	            }
 				if (closest) {
-	                console.log('1');
+	                if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
+	                    console.log('1');
+	                }
 					closest._addChild(layer);
 					layer.__parent = closest;
 					return;
@@ -1032,8 +1034,13 @@
 
 				//Try find a marker close by to form a new cluster with
 				closest = gridUnclustered[zoom].getNearObject(markerPoint);
+	            if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
+	                console.log('closest2', closest);
+	            }
 				if (closest) {
-	                console.log('2');
+	                if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
+	                    console.log('2');
+	                }
 					var parent = closest.__parent;
 	                if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
 	                    console.log('parent', parent);
