@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.3b6854c,
+ * Leaflet.markercluster 1.5.4+master.8adf1d4,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -1000,17 +1000,12 @@
 
 		//Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
 		_addLayer: function (layer, zoom) {
-	        if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') {
-	            console.log('_addLayer', layer);
-	        }
 			var gridClusters = this._gridClusters,
 			    gridUnclustered = this._gridUnclustered,
 				minZoom = Math.floor(this._map.getMinZoom()),
 			    markerPoint, z;
 
-			if (this.options.singleMarkerMode) {
-				this._overrideMarkerIcon(layer);
-			}
+			if (this.options.singleMarkerMode) ;
 
 			layer.on(this._childMarkerEventHandlers, this);
 
@@ -1020,13 +1015,7 @@
 
 				//Try find a cluster close by
 				var closest = gridClusters[zoom].getNearObject(markerPoint);
-	            if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
-	                console.log('closest1', closest);
-	            }
 				if (closest) {
-	                if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
-	                    console.log('1');
-	                }
 					closest._addChild(layer);
 					layer.__parent = closest;
 					return;
@@ -1034,20 +1023,8 @@
 
 				//Try find a marker close by to form a new cluster with
 				closest = gridUnclustered[zoom].getNearObject(markerPoint);
-	            if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
-	                console.log('closest2', closest);
-	            }
 				if (closest) {
-	                if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
-	                    console.log('2');
-	                }
 					var parent = closest.__parent;
-	                if (layer.id === 'd1243d6e-1b4b-4859-89dd-b08855aa7fe2') { 
-	                    console.log('parent', parent);
-	                }
-					if (parent) {
-						this._removeLayer(closest, false);
-					}
 
 					//Create new cluster with these 2 in it
 
@@ -1065,13 +1042,12 @@
 					parent._addChild(lastParent);
 
 					//Remove closest from this zoom level and any above that it is in, replace with newCluster
-					this._removeFromGridUnclustered(closest, zoom);
+					// this._removeFromGridUnclustered(closest, zoom); check
 
 					return;
 				}
 
 				//Didn't manage to cluster in at this zoom, record us as a marker here and continue upwards
-	            console.log('3');
 				gridUnclustered[zoom].addObject(layer, markerPoint);
 			}
 
