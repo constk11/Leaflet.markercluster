@@ -194,6 +194,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	//Takes an array of markers and adds them in bulk
 	addLayers: function (layersArray, skipLayerAddEvent) {
+        console.log('addLayers')
 		if (!L.Util.isArray(layersArray)) {
 			return this.addLayer(layersArray);
 		}
@@ -996,7 +997,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 		    markerPoint, z;
 
 		if (this.options.singleMarkerMode) {
-			// this._overrideMarkerIcon(layer); check
+			this._overrideMarkerIcon(layer); 
 		}
 
 		layer.on(this._childMarkerEventHandlers, this);
@@ -1018,7 +1019,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			if (closest) {
 				var parent = closest.__parent;
 				if (parent) {
-					// this._removeLayer(closest, false); check
+					this._removeLayer(closest, false); 
 				}
 
 				//Create new cluster with these 2 in it
@@ -1037,7 +1038,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 				parent._addChild(lastParent);
 
 				//Remove closest from this zoom level and any above that it is in, replace with newCluster
-				// this._removeFromGridUnclustered(closest, zoom); check
+				this._removeFromGridUnclustered(closest, zoom); 
 
 				return;
 			}
