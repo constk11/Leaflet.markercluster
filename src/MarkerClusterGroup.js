@@ -194,7 +194,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	//Takes an array of markers and adds them in bulk
 	addLayers: function (layersArray, skipLayerAddEvent) {
-        console.log('addLayers')
 		if (!L.Util.isArray(layersArray)) {
 			return this.addLayer(layersArray);
 		}
@@ -259,7 +258,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 						continue;
 					}
 
-					this._addLayer(m, this._maxZoom);
+					// this._addLayer(m, this._maxZoom); check
 					if (!skipLayerAddEvent) {
 						this.fire('layeradd', { layer: m });
 					}
