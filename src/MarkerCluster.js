@@ -345,12 +345,12 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
                     // console.log(m);
                     // console.log(exceptBounds)
                     // const track = m._layers.get('track');
-                    let isMarkerTrackIntersectWithBounds = false;
+                    // var isMarkerTrackIntersectWithBounds = false;
                     // if (track) {
                     //     console.log(track._track)
                     // }
                     _isMarkerTrackIntersectMapBounds();
-					if (!exceptBounds || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectWithBounds)) {
+					if (!exceptBounds || !exceptBounds.contains(m._latlng)) {
 						c._group._featureGroup.removeLayer(m);
 						if (m.clusterShow) {
 							m.clusterShow();
