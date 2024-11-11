@@ -386,7 +386,47 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
                 return [point, trackPoints[index + 1]];
             }
         }).filter(Boolean);
-        console.log(trackLines)
+
+        function isPointInside(point, leftBottom, rightTop) {
+            return (
+                point.x >= leftBottom.x && point.x <= rightTop.x &&
+                point.y <= leftBottom.y && point.y >= rightTop.y
+            );
+        }
+
+        function isSegmentIntersect(p1, p2, q1, q2) {
+            function orientation(a, b, c) {
+                return (b.y - a.y) * (c.x - b.x) - (b.x - a.x) * (c.y - b.y);
+            }
+    
+            const o1 = orientation(p1, p2, q1);
+            const o2 = orientation(p1, p2, q2);
+            const o3 = orientation(q1, q2, p1);
+            const o4 = orientation(q1, q2, p2);
+    
+            // Проверяем общие случаи пересечения
+            if (o1 * o2 < 0 && o3 * o4 < 0) {
+                return true;
+            }
+    
+            return false;
+        }
+
+        for (let i = 0; i < trackLines.length - 1; i++) {
+            if (
+                isPointInside(trackLines[i][0], bottomLeft, topRight) 
+                || isPointInside(trackLines[i][1], bottomLeft, topRight)
+            ) {
+                return true;
+            }
+
+            return (
+                isSegmentIntersect(trackLines[i][0], trackLines[i][1], topLeft, topRight) || // верхняя грань
+                isSegmentIntersect(trackLines[i][0], trackLines[i][1], topRight, bottomRight) || // правая грань
+                isSegmentIntersect(trackLines[i][0], trackLines[i][1], bottomRight, bottomLeft) || // нижняя грань
+                isSegmentIntersect(trackLines[i][0], trackLines[i][1], bottomLeft, topLeft) // левая грань
+            );
+        }
 
         return false;
     },
