@@ -377,11 +377,9 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 
 		if (zoomLevelToStart <= zoom) {
 			if (runAtEveryLevel) {
-                console.log('runAtEveryLevel')
 				runAtEveryLevel(this);
 			}
 			if (runAtBottomLevel && zoom === zoomLevelToStop) {
-                console.log('runAtBottomLevel')
 				runAtBottomLevel(this);
 			}
 		}
