@@ -383,7 +383,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
         const trackLines = trackMarker._track.map(([x, y]) => ({x, y}));
         console.log(trackLines);
 
-        return true;
+        return false;
     },
 
 	//Run the given functions recursively to this and child clusters
