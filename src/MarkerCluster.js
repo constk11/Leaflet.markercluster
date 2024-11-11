@@ -342,6 +342,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				for (i = c._markers.length - 1; i >= 0; i--) {
 					m = c._markers[i];
                     console.log(m);
+                    console.log(exceptBounds)
                     const track = m._layers.get('track');
                     let isMarkerTrackIntersectWithBounds = false;
                     if (track) {
