@@ -380,8 +380,13 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
         const bottomLeft = { x: bounds._southWest.lat, y: bounds._southWest.lng };
         const bottomRight = { x: bounds._northEast.lat, y: bounds._northEast.lng };
 
-        const trackLines = trackMarker._track.map(([x, y]) => ({x, y}));
-        console.log(trackLines);
+        const trackPoints = trackMarker._track.map(([x, y]) => ({x, y}));
+        const trackLines = trackPoints.map((point, index) => {
+            if (index < trackPoints.length - 1) {
+                return [point, trackPoints[index + 1]];
+            }
+        }).filter(Boolean);
+        console.log(trackLines)
 
         return false;
     },
