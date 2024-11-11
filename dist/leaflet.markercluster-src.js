@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.f4e5648,
+ * Leaflet.markercluster 1.5.4+master.1e67071,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -1756,21 +1756,16 @@
 
 		//exceptBounds: If set, don't remove any markers/clusters in it
 		_recursivelyRemoveChildrenFromMap: function (previousBounds, mapMinZoom, zoomLevel, exceptBounds) {
-			var m, i, _isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds;
+			var m, i, isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds;
 			this._recursively(previousBounds, mapMinZoom - 1, zoomLevel - 1,
 				function (c) {
 					//Remove markers at every level
 					for (i = c._markers.length - 1; i >= 0; i--) {
 						m = c._markers[i];
-	                    // console.log(m);
-	                    // console.log(exceptBounds)
-	                    // const track = m._layers.get('track');
-	                    // var isMarkerTrackIntersectWithBounds = false;
-	                    // if (track) {
-	                    //     console.log(track._track)
-	                    // }
-	                    _isMarkerTrackIntersectMapBounds();
-						if (!exceptBounds || !exceptBounds.contains(m._latlng)) {
+						if (
+	                        !exceptBounds 
+	                        || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
+	                    ) {
 							c._group._featureGroup.removeLayer(m);
 							if (m.clusterShow) {
 								m.clusterShow();
@@ -1793,8 +1788,17 @@
 			);
 		},
 
-	    _isMarkerTrackIntersectMapBounds: function() {
-	        console.log('log');
+	    _isMarkerTrackIntersectMapBounds: function(marker, bounds) {
+	        const trackMarker = marker._layers.get('track');
+
+	        if (!trackMarker) {
+	            return false;
+	        }
+
+	        console.log(trackMarker._track);
+	        console.log(bounds);
+
+	        return true;
 	    },
 
 		//Run the given functions recursively to this and child clusters
