@@ -274,6 +274,9 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 	_recursivelyAddChildrenToMap: function (startPos, zoomLevel, bounds) {
 		this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 			function (c) {
+                console.log('c',c);
+                console.log('zoomLevel',zoomLevel);
+                console.log('c zoomLevel', c._zoom);
 				if (zoomLevel === c._zoom) {
 					return;
 				}
@@ -282,9 +285,9 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				for (var i = c._markers.length - 1; i >= 0; i--) {
 					var nm = c._markers[i];
 
-					// if (!bounds.contains(nm._latlng)) {
-					// 	continue;
-					// }
+					if (!bounds.contains(nm._latlng)) {
+						continue;
+					}
 
 					if (startPos) {
 						nm._backupLatlng = nm.getLatLng();
