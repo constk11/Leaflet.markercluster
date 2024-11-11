@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.e666482,
+ * Leaflet.markercluster 1.5.4+master.a7d6f93,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -1101,7 +1101,7 @@
 			if (this._zoom < mapZoom && this._currentShownBounds.intersects(this._getExpandedVisibleBounds())) { //Zoom in, split
 				this._animationStart();
 				//Remove clusters now off screen
-				// this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), this._zoom, this._getExpandedVisibleBounds());
+				this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), this._zoom, this._getExpandedVisibleBounds());
 
 				this._animationZoomIn(this._zoom, mapZoom);
 
@@ -1762,6 +1762,7 @@
 					for (i = c._markers.length - 1; i >= 0; i--) {
 						m = c._markers[i];
 	                    console.log(m);
+	                    this._isMarkerTrackIntersectWithBounds(m);
 						if (!exceptBounds || !exceptBounds.contains(m._latlng)) {
 							c._group._featureGroup.removeLayer(m);
 							if (m.clusterShow) {
@@ -1784,6 +1785,14 @@
 				}
 			);
 		},
+
+	    _isMarkerTrackIntersectWithBounds: function (marker) {
+	        const track = marker._layers.get('track');
+	        console.log(track);
+	        if (!track) {
+	            return false;
+	        }
+	    },
 
 		//Run the given functions recursively to this and child clusters
 		// boundsToApplyTo: a L.LatLngBounds representing the bounds of what clusters to recurse in to
