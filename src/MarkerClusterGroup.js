@@ -282,12 +282,11 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 				if (offset === l) {
 
 					// Refresh bounds and weighted positions.
-                    //check
-					// this._topClusterLevel._recalculateBounds();
+					this._topClusterLevel._recalculateBounds();
 
-					// this._refreshClustersIcons();
+					this._refreshClustersIcons();
 
-					// this._topClusterLevel._recursivelyAddChildrenToMap(null, this._zoom, this._currentShownBounds);
+					this._topClusterLevel._recursivelyAddChildrenToMap(null, this._zoom, this._currentShownBounds);
 				} else {
 					setTimeout(process, this.options.chunkDelay);
 				}
