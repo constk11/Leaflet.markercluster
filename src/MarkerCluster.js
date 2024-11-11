@@ -274,7 +274,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 	_recursivelyAddChildrenToMap: function (startPos, zoomLevel, bounds) {
 		this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 			function (c) {
-                console.log('c',c);
+                console.log('c markers',c._markers);
                 console.log('zoomLevel',zoomLevel);
                 console.log('c zoomLevel', c._zoom);
 				if (zoomLevel === c._zoom) {
