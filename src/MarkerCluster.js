@@ -377,9 +377,11 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 
 		if (zoomLevelToStart <= zoom) {
 			if (runAtEveryLevel) {
+                console.log('runAtEveryLevel')
 				runAtEveryLevel(this);
 			}
 			if (runAtBottomLevel && zoom === zoomLevelToStop) {
+                console.log('runAtBottomLevel')
 				runAtBottomLevel(this);
 			}
 		}
@@ -387,13 +389,10 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		if (zoom < zoomLevelToStart || zoom < zoomLevelToStop) {
 			for (i = childClusters.length - 1; i >= 0; i--) {
 				c = childClusters[i];
-                console.log('c',c)
 				if (c._boundsNeedUpdate) {
-                    console.log('update')
 					c._recalculateBounds();
 				}
 				if (boundsToApplyTo.intersects(c._bounds)) {
-                    console.log('intersect')
 					c._recursively(boundsToApplyTo, zoomLevelToStart, zoomLevelToStop, runAtEveryLevel, runAtBottomLevel);
 				}
 			}
