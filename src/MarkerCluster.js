@@ -336,7 +336,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 
 	//exceptBounds: If set, don't remove any markers/clusters in it
 	_recursivelyRemoveChildrenFromMap: function (previousBounds, mapMinZoom, zoomLevel, exceptBounds) {
-		var m, i, isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds;
+		var m, i, isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 		this._recursively(previousBounds, mapMinZoom - 1, zoomLevel - 1,
 			function (c) {
 				//Remove markers at every level
