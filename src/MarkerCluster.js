@@ -275,7 +275,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 			function (c) {
 				if (zoomLevel === c._zoom) {
-                    console.log('return')
 					return;
 				}
 
@@ -284,7 +283,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 					var nm = c._markers[i];
 
 					if (!bounds.contains(nm._latlng)) {
-                        console.log('continue', nm)
 						continue;
 					}
 
@@ -377,11 +375,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		    zoom = this._zoom,
 		    i, c;
 
-        // console.log('childClusters', childClusters);
-        // console.log('zoom', zoom);
-        // console.log('zoomLevelToStart', zoomLevelToStart);
-        // console.log('zoomLevelToStop', zoomLevelToStop);
-
 		if (zoomLevelToStart <= zoom) {
 			if (runAtEveryLevel) {
 				runAtEveryLevel(this);
@@ -394,11 +387,13 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		if (zoom < zoomLevelToStart || zoom < zoomLevelToStop) {
 			for (i = childClusters.length - 1; i >= 0; i--) {
 				c = childClusters[i];
-                // console.log('c',c)
+                console.log('c',c)
 				if (c._boundsNeedUpdate) {
+                    console.log('update')
 					c._recalculateBounds();
 				}
 				if (boundsToApplyTo.intersects(c._bounds)) {
+                    console.log('intersect')
 					c._recursively(boundsToApplyTo, zoomLevelToStart, zoomLevelToStop, runAtEveryLevel, runAtBottomLevel);
 				}
 			}

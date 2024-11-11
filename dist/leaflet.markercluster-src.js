@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.788d08b,
+ * Leaflet.markercluster 1.5.4+master.22c50ff,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -1695,7 +1695,6 @@
 			this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 				function (c) {
 					if (zoomLevel === c._zoom) {
-	                    console.log('return');
 						return;
 					}
 
@@ -1704,7 +1703,6 @@
 						var nm = c._markers[i];
 
 						if (!bounds.contains(nm._latlng)) {
-	                        console.log('continue', nm);
 							continue;
 						}
 
@@ -1797,11 +1795,6 @@
 			    zoom = this._zoom,
 			    i, c;
 
-	        // console.log('childClusters', childClusters);
-	        // console.log('zoom', zoom);
-	        // console.log('zoomLevelToStart', zoomLevelToStart);
-	        // console.log('zoomLevelToStop', zoomLevelToStop);
-
 			if (zoomLevelToStart <= zoom) {
 				if (runAtEveryLevel) {
 					runAtEveryLevel(this);
@@ -1814,11 +1807,13 @@
 			if (zoom < zoomLevelToStart || zoom < zoomLevelToStop) {
 				for (i = childClusters.length - 1; i >= 0; i--) {
 					c = childClusters[i];
-	                // console.log('c',c)
+	                console.log('c',c);
 					if (c._boundsNeedUpdate) {
+	                    console.log('update');
 						c._recalculateBounds();
 					}
 					if (boundsToApplyTo.intersects(c._bounds)) {
+	                    console.log('intersect');
 						c._recursively(boundsToApplyTo, zoomLevelToStart, zoomLevelToStop, runAtEveryLevel, runAtBottomLevel);
 					}
 				}
