@@ -281,6 +281,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				//Add our child markers at startPos (so they can be animated out)
 				for (var i = c._markers.length - 1; i >= 0; i--) {
 					var nm = c._markers[i];
+                    console.log(nm)
 
 					if (!bounds.contains(nm._latlng)) {
 						continue;
@@ -335,7 +336,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 
 	//exceptBounds: If set, don't remove any markers/clusters in it
 	_recursivelyRemoveChildrenFromMap: function (previousBounds, mapMinZoom, zoomLevel, exceptBounds) {
-		var m, i, _isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds;
+		var m, i, _isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 		this._recursively(previousBounds, mapMinZoom - 1, zoomLevel - 1,
 			function (c) {
 				//Remove markers at every level
