@@ -1087,15 +1087,11 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 		//In case we are starting to split before the animation finished
 		this._processQueue();
-        console.log('this._zoom',this._zoom);
-        console.log('mapZoom', mapZoom);
-        console.log('this._currentShownBounds', this._currentShownBounds);
-        console.log('this._getExpandedVisibleBounds()', this._getExpandedVisibleBounds());
 
 		if (this._zoom < mapZoom && this._currentShownBounds.intersects(this._getExpandedVisibleBounds())) { //Zoom in, split
 			this._animationStart();
 			//Remove clusters now off screen
-			// this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), this._zoom, this._getExpandedVisibleBounds());
+			this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), this._zoom, this._getExpandedVisibleBounds());
 
 			this._animationZoomIn(this._zoom, mapZoom);
 
