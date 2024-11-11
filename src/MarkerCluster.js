@@ -272,6 +272,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 	},
 
 	_recursivelyAddChildrenToMap: function (startPos, zoomLevel, bounds) {
+        var isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 		this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 			function (c) {
 				if (zoomLevel === c._zoom) {
@@ -282,8 +283,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				for (var i = c._markers.length - 1; i >= 0; i--) {
 					var nm = c._markers[i];
 
-					if (!bounds.contains(nm._latlng)) {
-                        console.log(nm)
+					if (!bounds.contains(nm._latlng) && !isMarkerTrackIntersectMapBounds(nm, bounds)) {
 						continue;
 					}
 
