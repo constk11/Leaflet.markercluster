@@ -300,7 +300,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				}
 			},
 			function (c) {
-                console.log(c._markers)
 				c._addToMap(startPos);
 			}
 		);
@@ -455,6 +454,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		if (zoom < zoomLevelToStart || zoom < zoomLevelToStop) {
 			for (i = childClusters.length - 1; i >= 0; i--) {
 				c = childClusters[i];
+                console.log(c)
 				if (c._boundsNeedUpdate) {
 					c._recalculateBounds();
 				}
