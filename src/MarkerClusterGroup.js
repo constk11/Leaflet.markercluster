@@ -194,6 +194,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	//Takes an array of markers and adds them in bulk
 	addLayers: function (layersArray, skipLayerAddEvent) {
+        console.log(layersArray)
 		if (!L.Util.isArray(layersArray)) {
 			return this.addLayer(layersArray);
 		}
@@ -692,7 +693,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 		var map = this._map,
 		    gridUnclustered = this._gridUnclustered,
 			minZoom = Math.floor(this._map.getMinZoom());
-            console.log(marker)
 
 		for (; z >= minZoom; z--) {
 			if (!gridUnclustered[z].removeObject(marker, map.project(marker.getLatLng(), z))) {
