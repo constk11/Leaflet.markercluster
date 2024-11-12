@@ -275,7 +275,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
         var isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 		this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 			function (c) {
-                console.log(c)
 				if (zoomLevel === c._zoom) {
 					return;
 				}
@@ -343,6 +342,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				//Remove markers at every level
 				for (i = c._markers.length - 1; i >= 0; i--) {
 					m = c._markers[i];
+                    console.log(m._objectInfo.name)
 					if (
                         !exceptBounds 
                         || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
