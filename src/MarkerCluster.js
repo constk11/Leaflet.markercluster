@@ -376,6 +376,15 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
             return false;
         }
 
+        // remove
+
+        if (trackMarker._track.length === 0) {
+            return false;
+        }
+
+        return true;
+        //
+
         console.log(bounds)
         console.log(trackMarker)
 
