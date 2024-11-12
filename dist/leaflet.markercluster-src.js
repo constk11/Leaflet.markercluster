@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.516a1b4,
+ * Leaflet.markercluster 1.5.4+master.7209145,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -999,6 +999,7 @@
 
 		//Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
 		_addLayer: function (layer, zoom) {
+	        console.log(layer);
 			var gridClusters = this._gridClusters,
 			    gridUnclustered = this._gridUnclustered,
 				minZoom = Math.floor(this._map.getMinZoom()),
@@ -1761,7 +1762,6 @@
 					//Remove markers at every level
 					for (i = c._markers.length - 1; i >= 0; i--) {
 						m = c._markers[i];
-	                    console.log(m._objectInfo.name);
 						if (
 	                        !exceptBounds 
 	                        || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
