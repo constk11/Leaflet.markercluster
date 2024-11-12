@@ -131,6 +131,9 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			}
 		}
 
+        console.log(layer)
+        console.log(this._currentShownBounds.contains(visibleLayer.getLatLng()))
+
 		if (this._currentShownBounds.contains(visibleLayer.getLatLng())) {
 			if (this.options.animateAddingMarkers) {
 				this._animationAddLayer(layer, visibleLayer);

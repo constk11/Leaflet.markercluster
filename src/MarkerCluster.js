@@ -346,7 +346,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
                         !exceptBounds 
                         || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
                     ) {
-                        console.log(m._objectInfo.name)
 						c._group._featureGroup.removeLayer(m);
 						if (m.clusterShow) {
 							m.clusterShow();
