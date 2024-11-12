@@ -83,6 +83,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	addLayer: function (layer) {
+        console.log('layer', layer)
         
         // layer is MapObject
 
@@ -130,9 +131,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 				visibleLayer = visibleLayer.__parent;
 			}
 		}
-
-        console.log(layer)
-        console.log(this._currentShownBounds.contains(visibleLayer.getLatLng()))
 
 		if (this._currentShownBounds.contains(visibleLayer.getLatLng())) {
 			if (this.options.animateAddingMarkers) {
