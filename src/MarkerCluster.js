@@ -421,12 +421,14 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
                 return true;
             }
 
-            return (
+            if (
                 isSegmentIntersect(trackLines[i][0], trackLines[i][1], topLeft, topRight) || // верхняя грань
                 isSegmentIntersect(trackLines[i][0], trackLines[i][1], topRight, bottomRight) || // правая грань
                 isSegmentIntersect(trackLines[i][0], trackLines[i][1], bottomRight, bottomLeft) || // нижняя грань
-                isSegmentIntersect(trackLines[i][0], trackLines[i][1], bottomLeft, topLeft) // левая грань
-            );
+                isSegmentIntersect(trackLines[i][0], trackLines[i][1], bottomLeft, topLeft) // левая грань)
+            ) {
+                return true;
+            }
         }
 
         return false;
