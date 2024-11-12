@@ -376,6 +376,9 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
             return false;
         }
 
+        console.log(bounds)
+        console.log(trackMarker)
+
         const topLeft = { x: bounds._southWest.lat, y: bounds._northEast.lng };
         const topRight = { x: bounds._northEast.lat, y: bounds._northEast.lng };
         const bottomLeft = { x: bounds._southWest.lat, y: bounds._southWest.lng };

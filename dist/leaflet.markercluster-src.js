@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.f689fcb,
+ * Leaflet.markercluster 1.5.4+master.2441bc2,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -1795,6 +1795,9 @@
 	        if (!trackMarker) {
 	            return false;
 	        }
+
+	        console.log(bounds);
+	        console.log(trackMarker);
 
 	        const topLeft = { x: bounds._southWest.lat, y: bounds._northEast.lng };
 	        const topRight = { x: bounds._northEast.lat, y: bounds._northEast.lng };
