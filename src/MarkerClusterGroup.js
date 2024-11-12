@@ -194,7 +194,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	//Takes an array of markers and adds them in bulk
 	addLayers: function (layersArray, skipLayerAddEvent) {
-        console.log(layersArray)
 		if (!L.Util.isArray(layersArray)) {
 			return this.addLayer(layersArray);
 		}
