@@ -255,6 +255,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 					}
 
 					if (this.hasLayer(m)) {
+                        console.log(m)
 						continue;
 					}
 
