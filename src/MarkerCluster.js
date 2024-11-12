@@ -283,9 +283,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				for (var i = c._markers.length - 1; i >= 0; i--) {
 					var nm = c._markers[i];
 
-                    console.log(nm);
-                    console.log(isMarkerTrackIntersectMapBounds(nm, bounds))
-
 					if (!bounds.contains(nm._latlng) && !isMarkerTrackIntersectMapBounds(nm, bounds)) {
 						continue;
 					}
@@ -303,6 +300,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				}
 			},
 			function (c) {
+                console.log(c._markers)
 				c._addToMap(startPos);
 			}
 		);
