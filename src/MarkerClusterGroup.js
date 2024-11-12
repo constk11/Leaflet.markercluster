@@ -83,7 +83,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	addLayer: function (layer) {
-        console.log('layer', layer)
         
         // layer is MapObject
 
@@ -666,7 +665,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	getVisibleParent: function (marker) {
-        console.log('getVisibleParent',marker)
 		var vMarker = marker;
 		while (vMarker && !vMarker._icon) {
 			vMarker = vMarker.__parent;

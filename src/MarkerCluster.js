@@ -275,6 +275,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
         var isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 		this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 			function (c) {
+                console.log(c)
 				if (zoomLevel === c._zoom) {
 					return;
 				}
