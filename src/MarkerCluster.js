@@ -346,6 +346,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
                         !exceptBounds 
                         || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
                     ) {
+                        console.log(m._objectInfo.name)
 						c._group._featureGroup.removeLayer(m);
 						if (m.clusterShow) {
 							m.clusterShow();
@@ -357,7 +358,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				//Remove child clusters at just the bottom level
 				for (i = c._childClusters.length - 1; i >= 0; i--) {
 					m = c._childClusters[i];
-                    console.log(m)
 					if (!exceptBounds || !exceptBounds.contains(m._latlng)) {
 						c._group._featureGroup.removeLayer(m);
 						if (m.clusterShow) {
