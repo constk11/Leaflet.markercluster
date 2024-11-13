@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.15cbd15,
+ * Leaflet.markercluster 1.5.4+master.d33866e,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -999,7 +999,6 @@
 
 		//Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
 		_addLayer: function (layer, zoom) {
-	        console.log(layer);
 	        if (layer._objectInfo.name === 'ntosman2') {
 	            console.log(layer);
 	        }
@@ -1023,6 +1022,9 @@
 				if (closest) {
 					closest._addChild(layer);
 					layer.__parent = closest;
+	                if (layer._objectInfo.name === 'ntosman2') {
+	                    console.log('closest._addChild');
+	                }
 					return;
 				}
 
@@ -1051,7 +1053,10 @@
 
 					//Remove closest from this zoom level and any above that it is in, replace with newCluster
 					this._removeFromGridUnclustered(closest, zoom); 
-
+	                if (layer._objectInfo.name === 'ntosman2') {
+	                    console.log('_removeFromGridUnclustered');
+	                }
+	                
 					return;
 				}
 
@@ -1060,6 +1065,9 @@
 			}
 
 			//Didn't get in anything, add us to the top
+	        if (layer._objectInfo.name === 'ntosman2') {
+	            console.log('_topClusterLevel._addChild');
+	        }
 			this._topClusterLevel._addChild(layer);
 			layer.__parent = this._topClusterLevel;
 			return;
@@ -1695,6 +1703,7 @@
 		},
 
 		_recursivelyAddChildrenToMap: function (startPos, zoomLevel, bounds) {
+	        console.log('_recursivelyAddChildrenToMap');
 	        var isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 			this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 				function (c) {
