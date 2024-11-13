@@ -340,6 +340,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		this._recursively(previousBounds, mapMinZoom - 1, zoomLevel - 1,
 			function (c) {
 				//Remove markers at every level
+                console.log(c)
 				for (i = c._markers.length - 1; i >= 0; i--) {
 					m = c._markers[i];
 					if (

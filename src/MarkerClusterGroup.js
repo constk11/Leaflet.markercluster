@@ -689,7 +689,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	 * @private
 	 */
 	_removeFromGridUnclustered: function (marker, z) {
-        console.log(marker)
 		var map = this._map,
 		    gridUnclustered = this._gridUnclustered,
 			minZoom = Math.floor(this._map.getMinZoom());
