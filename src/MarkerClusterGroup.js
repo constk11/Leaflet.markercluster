@@ -1017,9 +1017,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			if (closest) {
 				var parent = closest.__parent;
 				if (parent) {
-                    if (layer._objectInfo.name === 'ntosman2') {
-                        console.log('parent', parent)
-                    }
 					this._removeLayer(closest, false); 
 				}
 

@@ -103,7 +103,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 
 
 	_addChild: function (new1, isNotificationFromChild) {
-        console.log(new1)
 		this._iconNeedsUpdate = true;
 
 		this._boundsNeedUpdate = true;
@@ -276,6 +275,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
         var isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 		this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 			function (c) {
+                console.log('c',c)
 				if (zoomLevel === c._zoom) {
 					return;
 				}
