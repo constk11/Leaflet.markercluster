@@ -103,7 +103,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 
 
 	_addChild: function (new1, isNotificationFromChild) {
-        console.log(new1)
 		this._iconNeedsUpdate = true;
 
 		this._boundsNeedUpdate = true;
@@ -117,6 +116,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 			this._childCount += new1._childCount;
 		} else {
 			if (!isNotificationFromChild) {
+                console.log(new1)
 				this._markers.push(new1);
 			}
 			this._childCount++;
