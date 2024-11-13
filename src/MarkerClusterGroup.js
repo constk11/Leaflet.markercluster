@@ -255,7 +255,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 					}
 
 					if (this.hasLayer(m)) {
-                        console.log(m)
 						continue;
 					}
 
@@ -990,6 +989,10 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	//Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
 	_addLayer: function (layer, zoom) {
+        console.log(layer)
+        if (layer._objectInfo.name === 'ntosman2') {
+            console.log(layer)
+        }
 		var gridClusters = this._gridClusters,
 		    gridUnclustered = this._gridUnclustered,
 			minZoom = Math.floor(this._map.getMinZoom()),
