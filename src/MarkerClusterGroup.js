@@ -1037,10 +1037,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 				//Remove closest from this zoom level and any above that it is in, replace with newCluster
 				this._removeFromGridUnclustered(closest, zoom);
-
-                if (layer._layers.get('track')) {
-                    lastParent._addChild(layer);
-                }
                 
 				return;
 			}

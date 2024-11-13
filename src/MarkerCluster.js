@@ -283,7 +283,12 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				for (var i = c._markers.length - 1; i >= 0; i--) {
 					var nm = c._markers[i];
 
-					if (!bounds.contains(nm._latlng) && !isMarkerTrackIntersectMapBounds(nm, bounds)) {
+                    console.log('add', nm)
+
+					// if (!bounds.contains(nm._latlng) && !isMarkerTrackIntersectMapBounds(nm, bounds)) {
+					// 	continue;
+					// }
+                    if (!bounds.contains(nm._latlng)) {
 						continue;
 					}
 
@@ -342,10 +347,12 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				//Remove markers at every level
 				for (i = c._markers.length - 1; i >= 0; i--) {
 					m = c._markers[i];
-					if (
-                        !exceptBounds 
-                        || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
-                    ) {
+                    console.log('remove', m)
+					// if (
+                    //     !exceptBounds 
+                    //     || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
+                    // ) {
+                        if (!exceptBounds || !exceptBounds.contains(m._latlng)) {
 						c._group._featureGroup.removeLayer(m);
 						if (m.clusterShow) {
 							m.clusterShow();

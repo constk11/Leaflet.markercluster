@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.65c9a48,
+ * Leaflet.markercluster 1.5.4+master.e1e318b,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -1047,10 +1047,6 @@
 
 					//Remove closest from this zoom level and any above that it is in, replace with newCluster
 					this._removeFromGridUnclustered(closest, zoom);
-
-	                if (layer._layers.get('track')) {
-	                    lastParent._addChild(layer);
-	                }
 	                
 					return;
 				}
@@ -1706,7 +1702,12 @@
 					for (var i = c._markers.length - 1; i >= 0; i--) {
 						var nm = c._markers[i];
 
-						if (!bounds.contains(nm._latlng) && !isMarkerTrackIntersectMapBounds(nm, bounds)) {
+	                    console.log('add', nm);
+
+						// if (!bounds.contains(nm._latlng) && !isMarkerTrackIntersectMapBounds(nm, bounds)) {
+						// 	continue;
+						// }
+	                    if (!bounds.contains(nm._latlng)) {
 							continue;
 						}
 
@@ -1765,10 +1766,12 @@
 					//Remove markers at every level
 					for (i = c._markers.length - 1; i >= 0; i--) {
 						m = c._markers[i];
-						if (
-	                        !exceptBounds 
-	                        || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
-	                    ) {
+	                    console.log('remove', m);
+						// if (
+	                    //     !exceptBounds 
+	                    //     || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
+	                    // ) {
+	                        if (!exceptBounds || !exceptBounds.contains(m._latlng)) {
 							c._group._featureGroup.removeLayer(m);
 							if (m.clusterShow) {
 								m.clusterShow();
