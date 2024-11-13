@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.d33866e,
+ * Leaflet.markercluster 1.5.4+master.cfb19d8,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -999,9 +999,6 @@
 
 		//Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
 		_addLayer: function (layer, zoom) {
-	        if (layer._objectInfo.name === 'ntosman2') {
-	            console.log(layer);
-	        }
 			var gridClusters = this._gridClusters,
 			    gridUnclustered = this._gridUnclustered,
 				minZoom = Math.floor(this._map.getMinZoom()),
@@ -1022,9 +1019,6 @@
 				if (closest) {
 					closest._addChild(layer);
 					layer.__parent = closest;
-	                if (layer._objectInfo.name === 'ntosman2') {
-	                    console.log('closest._addChild');
-	                }
 					return;
 				}
 
@@ -1033,6 +1027,9 @@
 				if (closest) {
 					var parent = closest.__parent;
 					if (parent) {
+	                    if (layer._objectInfo.name === 'ntosman2') {
+	                        console.log('parent', parent);
+	                    }
 						this._removeLayer(closest, false); 
 					}
 
@@ -1052,10 +1049,7 @@
 					parent._addChild(lastParent);
 
 					//Remove closest from this zoom level and any above that it is in, replace with newCluster
-					this._removeFromGridUnclustered(closest, zoom); 
-	                if (layer._objectInfo.name === 'ntosman2') {
-	                    console.log('_removeFromGridUnclustered');
-	                }
+					this._removeFromGridUnclustered(closest, zoom);
 	                
 					return;
 				}
@@ -1065,9 +1059,6 @@
 			}
 
 			//Didn't get in anything, add us to the top
-	        if (layer._objectInfo.name === 'ntosman2') {
-	            console.log('_topClusterLevel._addChild');
-	        }
 			this._topClusterLevel._addChild(layer);
 			layer.__parent = this._topClusterLevel;
 			return;
@@ -1534,7 +1525,7 @@
 
 
 		_addChild: function (new1, isNotificationFromChild) {
-
+	        console.log(new1);
 			this._iconNeedsUpdate = true;
 
 			this._boundsNeedUpdate = true;
@@ -1702,8 +1693,8 @@
 			});
 		},
 
+	    // вызывается при перерисовки слоев (addLayers) и при addLayer (открытие виджета слоев карты)
 		_recursivelyAddChildrenToMap: function (startPos, zoomLevel, bounds) {
-	        console.log('_recursivelyAddChildrenToMap');
 	        var isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 			this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 				function (c) {

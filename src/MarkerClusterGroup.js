@@ -989,9 +989,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	//Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
 	_addLayer: function (layer, zoom) {
-        if (layer._objectInfo.name === 'ntosman2') {
-            console.log(layer)
-        }
 		var gridClusters = this._gridClusters,
 		    gridUnclustered = this._gridUnclustered,
 			minZoom = Math.floor(this._map.getMinZoom()),
@@ -1012,9 +1009,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			if (closest) {
 				closest._addChild(layer);
 				layer.__parent = closest;
-                if (layer._objectInfo.name === 'ntosman2') {
-                    console.log('closest._addChild')
-                }
 				return;
 			}
 
@@ -1023,6 +1017,9 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			if (closest) {
 				var parent = closest.__parent;
 				if (parent) {
+                    if (layer._objectInfo.name === 'ntosman2') {
+                        console.log('parent', parent)
+                    }
 					this._removeLayer(closest, false); 
 				}
 
@@ -1042,10 +1039,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 				parent._addChild(lastParent);
 
 				//Remove closest from this zoom level and any above that it is in, replace with newCluster
-				this._removeFromGridUnclustered(closest, zoom); 
-                if (layer._objectInfo.name === 'ntosman2') {
-                    console.log('_removeFromGridUnclustered')
-                }
+				this._removeFromGridUnclustered(closest, zoom);
                 
 				return;
 			}
@@ -1055,9 +1049,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 		}
 
 		//Didn't get in anything, add us to the top
-        if (layer._objectInfo.name === 'ntosman2') {
-            console.log('_topClusterLevel._addChild')
-        }
 		this._topClusterLevel._addChild(layer);
 		layer.__parent = this._topClusterLevel;
 		return;

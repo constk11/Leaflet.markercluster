@@ -103,7 +103,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 
 
 	_addChild: function (new1, isNotificationFromChild) {
-
+        console.log(new1)
 		this._iconNeedsUpdate = true;
 
 		this._boundsNeedUpdate = true;
@@ -271,8 +271,8 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		});
 	},
 
+    // вызывается при перерисовки слоев (addLayers) и при addLayer (открытие виджета слоев карты)
 	_recursivelyAddChildrenToMap: function (startPos, zoomLevel, bounds) {
-        console.log('_recursivelyAddChildrenToMap')
         var isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 		this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
 			function (c) {
