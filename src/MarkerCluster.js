@@ -342,7 +342,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				//Remove markers at every level
 				for (i = c._markers.length - 1; i >= 0; i--) {
 					m = c._markers[i];
-                    console.log(m)
 					if (
                         !exceptBounds 
                         || (!exceptBounds.contains(m._latlng) && !isMarkerTrackIntersectMapBounds(m, exceptBounds))
