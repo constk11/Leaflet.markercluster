@@ -1006,9 +1006,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 			//Try find a cluster close by
 			var closest = gridClusters[zoom].getNearObject(markerPoint);
-            if (layer._objectInfo.name === 'ntosman2') {
-                console.log('closest', closest);
-            }
 			if (closest) {
 				closest._addChild(layer);
 				layer.__parent = closest;
@@ -1036,9 +1033,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 					lastParent = new this._markerCluster(this, z, lastParent);
 					gridClusters[z].addObject(lastParent, this._map.project(closest.getLatLng(), z));
 				}
-                if (layer._objectInfo.name === 'ntosman2') {
-                    console.log('parent', parent);
-                }
 				parent._addChild(lastParent);
 
 				//Remove closest from this zoom level and any above that it is in, replace with newCluster
