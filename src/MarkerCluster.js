@@ -103,6 +103,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 
 
 	_addChild: function (new1, isNotificationFromChild) {
+        console.log(new1)
 		this._iconNeedsUpdate = true;
 
 		this._boundsNeedUpdate = true;
@@ -282,8 +283,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				//Add our child markers at startPos (so they can be animated out)
 				for (var i = c._markers.length - 1; i >= 0; i--) {
 					var nm = c._markers[i];
-
-                    console.log('add', nm)
 
 					// if (!bounds.contains(nm._latlng) && !isMarkerTrackIntersectMapBounds(nm, bounds)) {
 					// 	continue;
