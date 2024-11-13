@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.9ea97aa,
+ * Leaflet.markercluster 1.5.4+master.e5a3b18,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -746,6 +746,7 @@
 		//Internal function for removing a marker from everything.
 		//dontUpdateMap: set to true if you will handle updating the map manually (for bulk functions)
 		_removeLayer: function (marker, removeFromDistanceGrid, dontUpdateMap) {
+	        console.log(marker);
 			var gridClusters = this._gridClusters,
 				gridUnclustered = this._gridUnclustered,
 				fg = this._featureGroup,
@@ -1887,7 +1888,6 @@
 			if (zoom < zoomLevelToStart || zoom < zoomLevelToStop) {
 				for (i = childClusters.length - 1; i >= 0; i--) {
 					c = childClusters[i];
-	                console.log(c);
 					if (c._boundsNeedUpdate) {
 						c._recalculateBounds();
 					}
