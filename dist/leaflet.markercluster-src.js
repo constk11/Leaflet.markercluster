@@ -1,5 +1,5 @@
 /*
- * Leaflet.markercluster 1.5.4+master.e30e9a7,
+ * Leaflet.markercluster 1.5.4+master.507cc2d,
  * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
  * https://github.com/Leaflet/Leaflet.markercluster
  * (c) 2012-2017, Dave Leaver, smartrak
@@ -1014,6 +1014,11 @@
 			for (; zoom >= minZoom; zoom--) {
 				markerPoint = this._map.project(layer.getLatLng(), zoom); // calculate pixel position
 
+	            if (layer._objectInfo.name === 'ntosman2') {
+	                console.log('gridClusters', gridClusters);
+	                console.log('gridUnclustered', gridUnclustered);
+	            }
+
 				//Try find a cluster close by
 				var closest = gridClusters[zoom].getNearObject(markerPoint);
 				if (closest) {
@@ -1050,6 +1055,7 @@
 	                
 					return;
 				}
+	            
 
 				//Didn't manage to cluster in at this zoom, record us as a marker here and continue upwards
 				gridUnclustered[zoom].addObject(layer, markerPoint);
@@ -1535,7 +1541,7 @@
 				this._childCount += new1._childCount;
 			} else {
 				if (!isNotificationFromChild) {
-	                console.log(new1);
+	                // console.log(new1)
 					this._markers.push(new1);
 				}
 				this._childCount++;

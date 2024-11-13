@@ -1004,6 +1004,11 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 		for (; zoom >= minZoom; zoom--) {
 			markerPoint = this._map.project(layer.getLatLng(), zoom); // calculate pixel position
 
+            if (layer._objectInfo.name === 'ntosman2') {
+                console.log('gridClusters', gridClusters);
+                console.log('gridUnclustered', gridUnclustered)
+            }
+
 			//Try find a cluster close by
 			var closest = gridClusters[zoom].getNearObject(markerPoint);
 			if (closest) {
@@ -1040,6 +1045,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
                 
 				return;
 			}
+            
 
 			//Didn't manage to cluster in at this zoom, record us as a marker here and continue upwards
 			gridUnclustered[zoom].addObject(layer, markerPoint);
