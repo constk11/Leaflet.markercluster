@@ -279,6 +279,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				if (zoomLevel === c._zoom) {
 					return;
 				}
+                console.log(c.getAllChildMarkers())
 
 				//Add our child markers at startPos (so they can be animated out)
 				for (var i = c._markers.length - 1; i >= 0; i--) {
@@ -469,8 +470,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				runAtBottomLevel(this);
 			}
 		}
-
-        console.log(childClusters)
 
 		if (zoom < zoomLevelToStart || zoom < zoomLevelToStop) {
 			for (i = childClusters.length - 1; i >= 0; i--) {
