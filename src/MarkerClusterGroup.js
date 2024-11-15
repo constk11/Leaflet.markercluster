@@ -131,6 +131,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			}
 		}
 
+        console.log(visibleLayer)
 		if (this._currentShownBounds.contains(visibleLayer.getLatLng())) {
 			if (this.options.animateAddingMarkers) {
 				this._animationAddLayer(layer, visibleLayer);
@@ -1005,8 +1006,8 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			markerPoint = this._map.project(layer.getLatLng(), zoom); // calculate pixel position
 
             if (layer._objectInfo.name === 'ntosman2') {
-                console.log('gridClusters', gridClusters);
-                console.log('gridUnclustered', gridUnclustered)
+                // console.log('gridClusters', gridClusters);
+                // console.log('gridUnclustered', gridUnclustered)
             }
 
 			//Try find a cluster close by
