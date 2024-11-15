@@ -50,6 +50,7 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 	},
 
 	initialize: function (options) {
+        console.log(options)
 		L.Util.setOptions(this, options);
 		if (!this.options.iconCreateFunction) {
 			this.options.iconCreateFunction = this._defaultIconCreateFunction;
@@ -131,7 +132,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			}
 		}
 
-        console.log(visibleLayer)
 		if (this._currentShownBounds.contains(visibleLayer.getLatLng())) {
 			if (this.options.animateAddingMarkers) {
 				this._animationAddLayer(layer, visibleLayer);
