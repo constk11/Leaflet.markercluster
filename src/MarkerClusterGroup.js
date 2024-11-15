@@ -79,7 +79,6 @@ export var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 		var animate = L.DomUtil.TRANSITION && this.options.animate;
 		L.extend(this, animate ? this._withAnimation : this._noAnimation);
 		// Remember which MarkerCluster class to instantiate (animated or not).
-        console.log(animate)
 		this._markerCluster = animate ? L.MarkerCluster : L.MarkerClusterNonAnimated;
 	},
 

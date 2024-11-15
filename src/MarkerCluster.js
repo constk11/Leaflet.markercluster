@@ -457,6 +457,8 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 	// runAtEveryLevel: function that takes an L.MarkerCluster as an argument that should be applied on every level
 	// runAtBottomLevel: function that takes an L.MarkerCluster as an argument that should be applied at only the bottom level
 	_recursively: function (boundsToApplyTo, zoomLevelToStart, zoomLevelToStop, runAtEveryLevel, runAtBottomLevel) {
+        console.log(zoomLevelToStart);
+        console.log(zoomLevelToStop)
 		var childClusters = this._childClusters,
 		    zoom = this._zoom,
 		    i, c;
