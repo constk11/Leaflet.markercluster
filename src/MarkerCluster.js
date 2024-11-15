@@ -279,15 +279,11 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 				if (zoomLevel === c._zoom) {
 					return;
 				}
-                console.log(c.getAllChildMarkers())
 
 				//Add our child markers at startPos (so they can be animated out)
 				for (var i = c._markers.length - 1; i >= 0; i--) {
 					var nm = c._markers[i];
 
-					// if (!bounds.contains(nm._latlng) && !isMarkerTrackIntersectMapBounds(nm, bounds)) {
-					// 	continue;
-					// }
                     if (!bounds.contains(nm._latlng)) {
 						continue;
 					}
@@ -474,6 +470,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		if (zoom < zoomLevelToStart || zoom < zoomLevelToStop) {
 			for (i = childClusters.length - 1; i >= 0; i--) {
 				c = childClusters[i];
+                console.log(c.getAllChildMarkers())
 				if (c._boundsNeedUpdate) {
 					c._recalculateBounds();
 				}
