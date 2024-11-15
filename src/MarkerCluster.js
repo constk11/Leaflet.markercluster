@@ -343,6 +343,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		var m, i, isMarkerTrackIntersectMapBounds = this._isMarkerTrackIntersectMapBounds.bind(this);
 		this._recursively(previousBounds, mapMinZoom - 1, zoomLevel - 1,
 			function (c) {
+                console.log('runAtEveryLevel',c._markers)
 				//Remove markers at every level
 				for (i = c._markers.length - 1; i >= 0; i--) {
 					m = c._markers[i];
@@ -360,6 +361,7 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 			},
 			function (c) {
 				//Remove child clusters at just the bottom level
+                console.log('runAtBottomLevel',c._markers)
 				for (i = c._childClusters.length - 1; i >= 0; i--) {
 					m = c._childClusters[i];
 					if (!exceptBounds || !exceptBounds.contains(m._latlng)) {
@@ -473,7 +475,6 @@ export var MarkerCluster = L.MarkerCluster = L.Marker.extend({
 		if (zoom < zoomLevelToStart || zoom < zoomLevelToStop) {
 			for (i = childClusters.length - 1; i >= 0; i--) {
 				c = childClusters[i];
-                console.log(c)
 				if (c._boundsNeedUpdate) {
 					c._recalculateBounds();
 				}
